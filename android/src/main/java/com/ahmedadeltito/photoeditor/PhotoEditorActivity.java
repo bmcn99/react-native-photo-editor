@@ -248,6 +248,9 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
             if (hiddenControls.get(i).toString().equalsIgnoreCase("sticker")) {
                 addImageEmojiTextView.setVisibility(View.INVISIBLE);
             }
+            if (hiddenControls.get(i).toString().equalsIgnoreCase("exportButton")) {
+                goToNextTextView.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
@@ -514,7 +517,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         } else if (v.getId() == R.id.done_drawing_tv) {
             updateBrushDrawingView(false);
         } else if (v.getId() == R.id.save_tv || v.getId() == R.id.save_text_tv) {
-            returnBackWithSavedImage();
+            returnBackWithUpdateImage();//this updates the image, which is what we want from the save function
         } else if (v.getId() == R.id.clear_all_tv || v.getId() == R.id.clear_all_text_tv) {
             clearAllViews();
         } else if (v.getId() == R.id.undo_text_tv || v.getId() == R.id.undo_tv) {
@@ -522,7 +525,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         } else if (v.getId() == R.id.erase_drawing_tv) {
             eraseDrawing();
         } else if (v.getId() == R.id.go_to_next_screen_tv) {
-            returnBackWithUpdateImage();
+            returnBackWithSavedImage();//This exports the image
         }
     }
 
